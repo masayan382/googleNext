@@ -2,10 +2,11 @@ import Head from "next/head"
 import Avatar from "../components/Avatar"
 import { MicrophoneIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
+import Footer from "../components/Footer"
 
 export default function Home() {
     return (
-        <div>
+        <div className="flex flex-col items-center justify-center h-screen">
             <Head>
                 <title>Google</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -43,7 +44,7 @@ export default function Home() {
             </header>
             {/* body */}
             <form
-                className="flex flex-col items-center mt-44 flex-grow"
+                className="flex flex-col items-center mt-44 flex-grow w-4/5"
                 action=""
             >
                 <Image
