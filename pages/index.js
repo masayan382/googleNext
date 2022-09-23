@@ -1,6 +1,5 @@
 import Head from "next/head"
 import Avatar from "../components/Avatar"
-import { MicrophoneIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Footer from "../components/Footer"
 import { useRef } from "react"

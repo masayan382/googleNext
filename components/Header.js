@@ -11,7 +11,7 @@ const Header = () => {
         e.preventDefault()
         const term = searchInputRef.current.value
         if (!term) return
-        router.push(`/serach?term=${term}`)
+        router.push(`/search?term=${term}`)
     }
     return (
         <header className="sticky top-0 bg-white">
