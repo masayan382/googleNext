@@ -4,8 +4,20 @@ const Footer = () => {
             <div className="px-8 py-3">
                 <p>United Kingdom</p>
             </div>
-            <div>
-                <div>Carbon neutral since 2007</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 grid-flow-row-dense px-8 py-3">
+                <div className="flex justify-center items-center md:col-span-2 lg:col-span-1 lg:col-start-2 ">
+                    Carbon neutral since 2007
+                </div>
+                <div className="flex justify-center space-x-8 whitespace-nowrap md:justify-self-start">
+                    <p>Advertising</p>
+                    <p>Business</p>
+                    <p>How Search works</p>
+                </div>
+                <div className="flex justify-center space-x-8 md:ml-auto">
+                    <p>Privacy</p>
+                    <p>Terms</p>
+                    <p>Setting</p>
+                </div>
             </div>
         </footer>
     )
