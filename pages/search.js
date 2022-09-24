@@ -7,16 +7,13 @@ import SearchResults from "../components/SearchResults"
 
 function Search({ results }) {
     const router = useRouter()
-    console.log(results)
     return (
         <div>
             <Head>
                 <title>{router.query.term} - Google Search</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <Header />
-            {/* Search Results */}
             <SearchResults results={results} />
         </div>
     )
@@ -25,14 +22,13 @@ function Search({ results }) {
 export default Search
 
 export async function getServerSideProps(context) {
-    // const useDummyData = true
     const useDummyData = false
     const startIndex = context.query.start || "0"
 
     const data = useDummyData
         ? Response
         : await fetch(
-              `https://www.googleapis.com/customsearch/v1?key=AIzaSyDHPvONtnlvPc8Mf3MkGxHEn1LCkPqh6Lc&cx=351ae4b8ac5be42b4&q=${context.query.term}`
+              `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
           ).then((response) => response.json())
 
     return {
