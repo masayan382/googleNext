@@ -1,18 +1,23 @@
 import Head from "next/head"
 import Header from "../components/Header"
 import { API_KEY, CONTEXT_KEY } from "../key"
+import { Response } from "../Response"
+import { useRouter } from "next/router"
+import SearchResults from "../components/SearchResults"
 
 function Search({ results }) {
+    const router = useRouter()
     console.log(results)
     return (
         <div>
             <Head>
-                <title>Search Results</title>
+                <title>{router.query.term} - Google Search</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <Header />
             {/* Search Results */}
+            <SearchResults results={results} />
         </div>
     )
 }
@@ -20,10 +25,15 @@ function Search({ results }) {
 export default Search
 
 export async function getServerSideProps(context) {
+    // const useDummyData = true
     const useDummyData = false
-    const data = await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}`
-    ).then((response) => response.json())
+    const startIndex = context.query.start || "0"
+
+    const data = useDummyData
+        ? Response
+        : await fetch(
+              `https://www.googleapis.com/customsearch/v1?key=AIzaSyDHPvONtnlvPc8Mf3MkGxHEn1LCkPqh6Lc&cx=351ae4b8ac5be42b4&q=${context.query.term}`
+          ).then((response) => response.json())
 
     return {
         props: {
